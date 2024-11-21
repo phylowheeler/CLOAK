@@ -1,4 +1,11 @@
-import matplotlib.pyplot as plt
+library(devtools)
+library(patchwork)
+library(sem)
+library(ggfortify)
+library(ggrepel)
+library(expm)
+library(ca)
+library(FactoMineR)
 
 #Figure 1
 df_pca <- prcomp(allQ)
@@ -16,6 +23,7 @@ ggplot(df_out,aes(x=PC1,y=PC2, color=group, label = filenames)) +
   ylim(-2.5,1.5)
 ggsave(filename = "archaea.jpg", width=5, height=5, units="in")
 
+#Figure 2
 df_pca <- prcomp(allE)
 df_out <- as.data.frame(df_pca$x)
 df_out$group = species
@@ -54,7 +62,7 @@ ggplot(df_out, aes(x=PC1,y=PC2, color=group, label=filenames)) +
   geom_vline(aes(xintercept = 0),linetype="dashed")
 ggsave(filename = "Transition_Eigen_Decomposition_1_biplot_second.jpg", width=5, height=6, units="in")
 
-#Figure 2
+#Figure 3
 df_pca <- prcomp(allE[1:7,])
 df_out <- as.data.frame(df_pca$x)
 df_loadings <- as.data.frame(df_pca$rotation)
