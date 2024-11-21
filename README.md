@@ -23,6 +23,7 @@ Guide for training amino acid substitution models on filtered multiple sequence 
 Scripts to generate publication figures
 
 ## Dependencies
+The software environment in the myenv.yml file contains the dependencies needed to run the software in this repository
 
 ### Python3
 This program requires Python3 to run. Python3 can be installed with [mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) or your prefered method.
