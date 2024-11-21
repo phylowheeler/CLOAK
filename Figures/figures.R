@@ -1,20 +1,94 @@
 import matplotlib.pyplot as plt
 
-# Define the points
-points = {
-    '4_files': (0.14530159017874744, 0.7338338027501042),
-    '7_files': (0.14486317846326538, 0.7346534460067548),
-    '16_files': (0.13304170843951246, 0.7253669848138146),
-    'clustal_omega': (0.25356285576640764, 0.7221922998445067),
-    'mafft': (0.23532388170161972, 0.7522102321758275),
-    'muscle5_divvy': (0.0417322150362372, 0.521403981175085),
-    'muscle5_partial_filtering': (0.031842732935118745, 0.47128731235615734),
-    'muscle5': (0.21938855618981626, 0.7698268362364417),
-    'mergealign': (0.21941503174888144, 0.7682606860798054),
-    'TrimAl': (0.21938855618981626, 0.775),
-    'Ground Truth': (0.0, 1.0),
-    'hmmcleaner':()
-}
+#Figure 1
+df_pca <- prcomp(allQ)
+df_out <- as.data.frame(df_pca$x)
+df_out$group = species
+percentage <- round(df_pca$sdev / sum(df_pca$sdev) * 100, 2)
+percentage <- paste( colnames(df_out), "(", paste( as.character(percentage), "%", ")", sep="") )
+ggplot(df_out,aes(x=PC1,y=PC2, color=group, label = filenames)) + 
+  theme(legend.position="none", legend.title = element_blank(),text = element_text(size=30)) + 
+  geom_point() +
+  geom_text_repel(size=3) +
+  xlab(percentage[1]) +
+  ylab(percentage[2]) +
+  xlim(-2.5,1.5) +
+  ylim(-2.5,1.5)
+ggsave(filename = "archaea.jpg", width=5, height=5, units="in")
+
+df_pca <- prcomp(allE)
+df_out <- as.data.frame(df_pca$x)
+df_out$group = species
+df_loadings <- as.data.frame(df_pca$rotation)
+percentage <- round(df_pca$sdev / sum(df_pca$sdev) * 100, 2)
+percentage <- paste( colnames(df_out), "(", paste( as.character(percentage), "%", ")", sep="") )
+ggplot(df_out,aes(x=PC1,y=PC2,color=group, label = filenames)) + 
+  theme(legend.position="none", legend.title = element_blank(),text = element_text(size=15)) + 
+  geom_point() +
+  geom_text_repel(size=5) +
+  xlab(percentage[1]) +
+  ylab(percentage[2]) +
+ggsave(filename = "Transition_Eigen_Decomposition_1.jpg", width=5, height=6, units="in")
+ggplot(df_out, aes(x=PC1,y=PC2, color=group, label=filenames)) + 
+  theme(legend.position="none", legend.title = element_blank(),text = element_text(size=15)) + 
+  geom_point() +
+  geom_point(data = subset(df_loadings, row.names(df_loadings) %in% colnames1), aes(x = PC1, y = PC2), color = "red", inherit.aes=FALSE) +
+  geom_text_repel(data = subset(df_loadings, row.names(df_loadings) %in% colnames1), aes(x = PC1, y = PC2), label = colnames1, color = "red", inherit.aes=FALSE, size=5) +
+  geom_text_repel(size=5) +
+  xlab(percentage[1]) +
+  ylab(percentage[2]) +
+  geom_hline(aes(yintercept = 0),linetype="dashed") +
+  geom_vline(aes(xintercept = 0),linetype="dashed") +
+  xlim(-0.6,0.5) +
+  ylim(-0.3,0.8)
+ggsave(filename = "Transition_Eigen_Decomposition_1_biplot_first.jpg", width=5, height=6, units="in")
+ggplot(df_out, aes(x=PC1,y=PC2, color=group, label=filenames)) + 
+  theme(legend.position="none", legend.title = element_blank(),text = element_text(size=15)) + 
+  geom_point() +
+  geom_point(data = subset(df_loadings, row.names(df_loadings) %in% colnames2), aes(x = PC1, y = PC2), color = "red", inherit.aes=FALSE) +
+  geom_text_repel(data = subset(df_loadings, row.names(df_loadings) %in% colnames2), aes(x = PC1, y = PC2), label = colnames2, color = "red", inherit.aes=FALSE, size=5) +
+  geom_text_repel(size=5) +
+  xlab(percentage[1]) +
+  ylab(percentage[2]) +
+  geom_hline(aes(yintercept = 0),linetype="dashed") +
+  geom_vline(aes(xintercept = 0),linetype="dashed")
+ggsave(filename = "Transition_Eigen_Decomposition_1_biplot_second.jpg", width=5, height=6, units="in")
+
+#Figure 2
+df_pca <- prcomp(allE[1:7,])
+df_out <- as.data.frame(df_pca$x)
+df_loadings <- as.data.frame(df_pca$rotation)
+percentage <- round(df_pca$sdev / sum(df_pca$sdev) * 100, 2)
+percentage <- paste( colnames(df_out), "(", paste( as.character(percentage), "%", ")", sep="") )
+ggplot(df_out,aes(x=PC1,y=PC2, label = filenames[1:7])) + 
+  theme(legend.position="none", legend.title = element_blank(),text = element_text(size=15)) + 
+  geom_point() +
+  geom_text_repel(size=5) +
+  xlab(percentage[1]) +
+  ylab(percentage[2])
+ggsave(filename = "Transition_Eigen_Decomposition_2.jpg", width=5, height=6, units="in")
+ggplot(df_out, aes(x=PC1,y=PC2, label=filenames[1:7])) + 
+  theme(legend.position="none", legend.title = element_blank(),text = element_text(size=15)) + 
+  geom_point() +
+  geom_point(data = subset(df_loadings, row.names(df_loadings) %in% colnames1), aes(x = PC1, y = PC2), color = "red", inherit.aes=FALSE) +
+  geom_text_repel(data = subset(df_loadings, row.names(df_loadings) %in% colnames1), aes(x = PC1, y = PC2), label = colnames1, color = "red", inherit.aes=FALSE, size=5) +
+  geom_text_repel(size=5) +
+  xlab(percentage[1]) +
+  ylab(percentage[2]) +
+  geom_hline(aes(yintercept = 0),linetype="dashed") +
+  geom_vline(aes(xintercept = 0),linetype="dashed")
+ggsave(filename = "Transition_Eigen_Decomposition_2_biplot_first.jpg", width=5, height=6, units="in")
+ggplot(df_out, aes(x=PC1,y=PC2, label=filenames[1:7])) + 
+  theme(legend.position="none", legend.title = element_blank(),text = element_text(size=15)) + 
+  geom_point() +
+  geom_point(data = subset(df_loadings, row.names(df_loadings) %in% colnames2), aes(x = PC1, y = PC2), color = "red", inherit.aes=FALSE) +
+  geom_text_repel(data = subset(df_loadings, row.names(df_loadings) %in% colnames2), aes(x = PC1, y = PC2), label = colnames2, color = "red", inherit.aes=FALSE, size=5) +
+  geom_text_repel(size=5) +
+  xlab(percentage[1]) +
+  ylab(percentage[2]) +
+  geom_hline(aes(yintercept = 0),linetype="dashed") +
+  geom_vline(aes(xintercept = 0),linetype="dashed")
+ggsave(filename = "Transition_Eigen_Decomposition_2_biplot_second.jpg", width=5, height=6, units="in")
 
 
 
