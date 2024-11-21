@@ -23,8 +23,8 @@ Guide for training amino acid substitution models on filtered multiple sequence 
 Scripts to generate publication figures
 
 ## Dependencies
-The software environment in the myenv.yml file contains the dependencies needed to run the software in this repository. Set up the environment with conda using
+The software environment in the cloak_env.yml file contains the dependencies needed to run the software in this repository. Set up the environment with conda using
 ```
-conda env create --file cloak.yml
-conda activate cloak
+conda env create --file cloak_env.yml
+conda activate cloak_env
 ```
