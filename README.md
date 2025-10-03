@@ -10,6 +10,17 @@ This tool can work with any set of input multiple sequence alignemnts, but it is
 ```
 muscle -align sequences.fasta -stratified -output ensemble.efa
 ```
+CLOAK can also be used directly within Muscle5 with the -cloak option, using providing either a multiple alignment file or directory of variant alignments.
+```
+muscle -cloak input_ensemble_file -mincol <integer> -output <output_file_name>
+```
+Arguments:
+- input_ensemble_file : Path to the input MSA file, which can either be an EFA file 
+                        or a text file with paths to individual MSAs on each line
+- -mincol <integer>   : Minimum number of non-gap characters required per column
+                        for that column to be retained in the output.
+                        Default value of 2 if not specified
+- -output <filename>  : Name of the file where the filtered MSA will be written.
 
 ## Directories in this Repository
 
