@@ -7,7 +7,6 @@ library(expm)
 library(ca)
 library(FactoMineR)
 
-
 #Figure 1
 df_pca <- prcomp(allQ)
 df_out <- as.data.frame(df_pca$x)
