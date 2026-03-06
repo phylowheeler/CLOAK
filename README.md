@@ -2,9 +2,9 @@
 Repository for the multiple sequence alignment filtering program: Cleaning on Alignment (K)onsensus (CLOAK). This software tool is designed to filter out errors from amino acid multiple sequence alignments by identifying dissimmilarities between variant alignments.
 
 ## Usage
-This tool can be used in one of two ways. First, the python version, cloak.py, is available for download from this repository. Alternatively, a version of CLOAK has been integrated directly into Muscle5. Instructions for running both versions are provided below. 
+This tool can be used in one of two ways. First, the python version, cloak.py, is available for download from this repository. Alternatively, a version of CLOAK has been integrated directly into [muscle5] (https://www.drive5.com/muscle/). Instructions for running both versions are provided below. 
 
-For both versions, the user must provide a set of multiple sequence alignments as input, either as an Ensemble FASTA (EFA) file, or the path to a directory containing the multiple sequence alignment files in FASTA format. This tool can work with any set of input multiple sequence alignemnts. It has been tested with with [muscle5] (https://www.drive5.com/muscle/) by generating a set of variant alignments using the stratified ensemble option:
+For both versions, the user must provide a set of multiple sequence alignments as input, either as an Ensemble FASTA (EFA) file, or the path to a directory containing the multiple sequence alignment files in FASTA format. This tool can work with any set of input multiple sequence alignments. It has been tested with alignments inferred with muscle5, using the stratified ensemble option to generate a set of variant alignments:
 ```
 muscle -align sequences.fasta -stratified -output ensemble.efa
 ```
