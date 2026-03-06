@@ -17,7 +17,7 @@ The muscle version can be run as a separate command within muscle as shown below
 muscle -cloak input_ensemble_file -mincol <integer> -output <output_file_name>
 ```
 Arguments:
-- input_ensemble_file : Path to the input MSA file, which can either be an EFA file 
+- -input_ensemble_file : Path to the input MSA file, which can either be an EFA file 
                         or a text file with paths to individual MSAs on each line
 - -mincol <integer>   : Minimum number of non-gap characters required per column
                         for that column to be retained in the output.
