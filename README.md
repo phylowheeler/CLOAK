@@ -4,15 +4,15 @@ Repository for the multiple sequence alignment filtering program: Cleaning on Al
 ## Usage
 This tool can be used in one of two ways. First, the python version, cloak.py, is available for download from this repository. Alternatively, a version of CLOAK has been integrated directly into Muscle5. Instructions for running both versions are provided below. 
 
-For both versions, the user must provide a set of multiple sequence alignments as input, either as an Ensemble FASTA (EFA) file, or the path to a directory containing the multiple sequence alignment files in FASTA format. This tool can work with any set of input multiple sequence alignemnts. It has been tested with with [muscle5] (https://www.drive5.com/muscle/) by generating a set of variant alignments using the stratified ensemble option, as shown below:
+For both versions, the user must provide a set of multiple sequence alignments as input, either as an Ensemble FASTA (EFA) file, or the path to a directory containing the multiple sequence alignment files in FASTA format. This tool can work with any set of input multiple sequence alignemnts. It has been tested with with [muscle5] (https://www.drive5.com/muscle/) by generating a set of variant alignments using the stratified ensemble option:
 ```
 muscle -align sequences.fasta -stratified -output ensemble.efa
 ```
-The python version can be run in python3 as shown below:
+The python version can be run in python3:
 ```
 python3 cloak.py -alignments myfile.efa
 ```
-The muscle version can be run as a separate command within muscle as shown below:
+The muscle version can be run as a separate command within muscle:
 ```
 muscle -cloak input_ensemble_file -mincol <integer> -output <output_file_name>
 ```
