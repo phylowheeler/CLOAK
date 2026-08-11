@@ -43,4 +43,4 @@ conda activate cloak_env
 ```
 ## License
 
-This code is released under the MIT License. See [`LICENSE`](LICENSE).
+This code is released under the GNU General Public License v3.0. See [`LICENSE`](LICENSE).
