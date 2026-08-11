@@ -41,3 +41,6 @@ The software environment in the cloak_env.yml file contains the dependencies nee
 conda env create --file cloak_env.yml
 conda activate cloak_env
 ```
+## License
+
+This code is released under the MIT License. See [`LICENSE`](LICENSE).
