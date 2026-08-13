@@ -35,6 +35,9 @@ Guide and scripts for training amino acid substitution models on filtered multip
 ### Figures
 Scripts and datafiles to generate publication figures
 
+### Data
+Raw datafiles used in analyses
+
 ### Tree_inference+comparison
 Scripts to infer phylogenetic trees and compare them to a reference species tree
 
