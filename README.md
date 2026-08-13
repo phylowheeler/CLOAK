@@ -26,14 +26,14 @@ Arguments:
 
 ## Directories in this Repository
 
-### Benchmarking
-Scripts to score the performance of multiple sequence alignment filtering programs
+### MSA_benchmarking
+Scripts to score the performance of multiple sequence alignment filtering programs based on the BAliBASE benchmark
 
 ### Substitution_Models
-Guide for training amino acid substitution models on filtered multiple sequence alignments, and scripts to compare substituion models to each other.
+Guide and scripts for training amino acid substitution models on filtered multiple sequence alignments. Pre-trained substitution models
 
 ### Figures
-Scripts to generate publication figures
+Scripts and datafiles to generate publication figures
 
 ## Dependencies
 The software environment in the cloak_env.yml file contains the dependencies needed to run the software in this repository. Set up the environment with conda using
