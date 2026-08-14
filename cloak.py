@@ -34,7 +34,6 @@ directory of fasta files in which all fasta files have the same order of species
 def order_the_alignments(directory):
     new_dir = "ordered_fasta_files_"+last_component
     parent_dir = "./"
-    path = os.path.join(parent_dir, new_dir)
     os.mkdir(path)
     for path, dirs, files in os.walk(directory):
         numFile = 0
@@ -80,6 +79,8 @@ def order_the_alignments(directory):
                         f.writelines(myDict[key][0])
                         f.writelines(myDict[key][1])
     return [new_dir, myDict]
+
+
 
 
 '''
@@ -226,20 +227,19 @@ def can_this_divvy_be_found_without_subsequent_divvies(toSearch, three_d_array_o
                 
     
 '''
-This function returns a 3d array containing all divvies - the singletons are included by default, but they can be removed easily
+This function returns a 3d array containing all divvies, except singletons
 '''
 def divvies_as_3darray(array_of_dicts):
     return_array = []
     for divvy_dict in array_of_dicts:
         array_per_alignment = []
         for x in divvy_dict:
-            #curr_array = divvy_dict[x]
-            #number_of_nums = 0
-            #for num in curr_array:
-            #    if num != "-":
-            #        number_of_nums += 1 
-            #if number_of_nums >= 2:
-            #THE COMMENTED OUT CODE ABOVE IS FOR REMOVING SINGLETONS - HERE WE ARE RETAINING SINGLETONS
+            curr_array = divvy_dict[x]
+            number_of_nums = 0
+            for num in curr_array:
+               if num != "-":
+                   number_of_nums += 1 
+            if number_of_nums >= 2:
             array_per_alignment.append(divvy_dict[x])
         return_array.append(array_per_alignment)
     return return_array
@@ -385,7 +385,7 @@ The main function is responsible for data processing (the outputs from the funct
 The output file is formatted as a fasta file
 '''
 def main():
-    [directory_to_use, myDict] = order_the_alignments(alignmentFolder) 
+    [directory_to_use,myDict] = order_the_alignments(alignmentFolder) 
     #directory_to_use contains the correctly ordered fasta files
     #myDict contains the species ids as keys, maps to [species header, species sequence]
 
@@ -426,3 +426,5 @@ def main():
             f.writelines(arrayOfSequences[i]+"\n")
 
 main()
+# alignments = sys.argv[1]
+# main(alignments)
