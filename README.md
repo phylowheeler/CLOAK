@@ -30,16 +30,16 @@ Arguments (for muscle version):
 Scripts to score the performance of multiple sequence alignment filtering programs based on the BAliBASE benchmark
 
 ### Substitution_Models
-Guide and scripts for training amino acid substitution models on filtered multiple sequence alignments. Pre-trained substitution models
+Guide and scripts for training amino acid substitution models on filtered multiple sequence alignments. Pre-trained substitution models. Scripts may require editing e.g. to set file paths or HPC settings
+
+### Tree_inference+comparison
+Scripts to infer phylogenetic trees and compare them to a reference species tree. Scripts may require editing e.g. to set file paths or HPC settings
 
 ### Figures
 Scripts and datafiles to generate publication figures
 
 ### Data
 Raw datafiles used in analyses
-
-### Tree_inference+comparison
-Scripts to infer phylogenetic trees and compare them to a reference species tree
 
 ## Dependencies
 The software environment in the cloak_env.yml file contains the dependencies needed to run the software in this repository. Set up the environment with conda using
