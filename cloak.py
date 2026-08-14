@@ -403,7 +403,7 @@ def main():
     reference_alignment = three_d_array_letters[0] #this is the alignment to which we compare - we recreate the numbering sequence in other alignments based on this array
     letters_array_output_initial = produce_output_in_letters(nums_array_output, transpose_output(reference_alignment, [])) #generates the desired output which needs to be processed
     letters_array_output = letters_array_output_initial
-    #letters_array_output = remove_singletons(letters_array_output_initial) #this function removes all singletons before we write our results to output
+    letters_array_output = remove_singletons(letters_array_output_initial) #this function removes all singletons before we write our results to output
     letters_array_output = transpose_output(letters_array_output, []) #need to do this for data processing purposes - makes it easier to write to output file later on
 
     arrayOfSpeciesHeaders = []
