@@ -33,12 +33,14 @@ run_iqtree() {
     fi
 
     # Build model 
-    MODEL_emperical="${MODEL_FILE}+F"
+    MODEL_emperical="${MODEL_FILE}"
 
     echo "[$(date)] Starting $ID with model ${MODEL_emperical}"
 
     iqtree3 -s "$ALIGN_FILE" \
             -m "$MODEL_emperical" \
+            -mfreq F
+            -mrate E,I,G,I+G,R
             -T "$THREADS_PER_JOB" \
             -seed 42 \
             -keep-ident \
