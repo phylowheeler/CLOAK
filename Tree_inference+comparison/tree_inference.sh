@@ -2,7 +2,6 @@
 
 # ========= CONFIGURATION =========
 ALIGN_DIR=
-MATCH_FILE=
 OUTPUT_DIR=
 MODEL_FILE=
 THREADS_PER_JOB=1             
@@ -65,5 +64,5 @@ export -f run_iqtree
 MAX_JOBS=$((90 / THREADS_PER_JOB))
 
 echo "[$(date)] Starting batch with $MAX_JOBS parallel IQ-TREE runs..."
-parallel --jobs "$MAX_JOBS" run_iqtree :::: "$MATCH_FILE"
+parallel --jobs "$MAX_JOBS" run_iqtree
 echo "[$(date)] All jobs complete."
