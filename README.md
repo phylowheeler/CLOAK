@@ -26,7 +26,7 @@ Arguments (for muscle version):
 
 ## Directories in this Repository
 
-### MSA_benchmarking
+### Benchmarking
 Scripts to score the performance of multiple sequence alignment filtering programs based on the BAliBASE benchmark
 
 ### Substitution_Models
