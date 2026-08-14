@@ -30,10 +30,10 @@ Arguments (for muscle version):
 Scripts to score the performance of multiple sequence alignment filtering programs based on the BAliBASE benchmark
 
 ### Substitution_Models
-Guide and scripts for training amino acid substitution models on filtered multiple sequence alignments. Pre-trained substitution models. Scripts may require editing e.g. to set file paths or HPC settings
+Guide and scripts for training amino acid substitution models on filtered multiple sequence alignments. Pre-trained substitution models. 
 
 ### Tree_inference+comparison
-Scripts to infer phylogenetic trees and compare them to a reference species tree. Scripts may require editing e.g. to set file paths or HPC settings
+Scripts to infer phylogenetic trees and compare them to a reference species tree.
 
 ### Figures
 Scripts and datafiles to generate publication figures
