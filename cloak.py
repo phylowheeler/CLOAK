@@ -34,6 +34,7 @@ directory of fasta files in which all fasta files have the same order of species
 def order_the_alignments(directory):
     new_dir = "ordered_fasta_files_"+last_component
     parent_dir = "./"
+    path = os.path.join(parent_dir, new_dir)
     os.mkdir(path)
     for path, dirs, files in os.walk(directory):
         numFile = 0
@@ -240,7 +241,7 @@ def divvies_as_3darray(array_of_dicts):
                if num != "-":
                    number_of_nums += 1 
             if number_of_nums >= 2:
-            array_per_alignment.append(divvy_dict[x])
+                array_per_alignment.append(divvy_dict[x])
         return_array.append(array_per_alignment)
     return return_array
 
