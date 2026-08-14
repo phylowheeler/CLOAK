@@ -12,5 +12,8 @@ dependencies:
   - requests
   - cogent3
   - divvier
+  - muscle
+  - iqtree
+  - astral
 
 prefix: /opt/ohpc/pub/apps/anaconda/2020.11
