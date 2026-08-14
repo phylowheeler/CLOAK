@@ -1,1 +1,1 @@
-Directory containing scripts used to generate figures and final versions of figures
+Directory containing scripts and datatables used to generate figures in the paper
