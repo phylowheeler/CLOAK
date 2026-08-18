@@ -10,7 +10,7 @@ Pretrained Q matrices:
 - QC.bac: trained on bacterial dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap and -partial options
 - QC.pfam: trained on pfam dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap and -partial options
 
-The uncleaned alignments for the mammalian, bacterial, archaeal, and pfam datasets can be found in the [Data](/Data) folder of this repository
+The uncleaned alignments for the mammalian, bacterial, archaeal, and pfam datasets can be found in the [Data](/Data) folder of this repository. The cleaned alignments were not retained.
 
 All QC matrices are also available on IQTree
 
