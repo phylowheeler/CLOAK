@@ -12,7 +12,7 @@ Pretrained Q matrices:
 
 The uncleaned alignments for the mammalian, bacterial, archaeal, and pfam datasets can be found in the [Data](/Data) folder of this repository. The cleaned alignments were not retained.
 
-All filtered Q matrices should be used with the +F empirical frequencies option in IQTree, rather than the amino acid frequencies in the Q files. Hybrid models in the manuscript (such as QC.pfam using mammalian amino acid frequencies), were also created by using the +F option. 
+All filtered Q matrices should be used with the +F empirical frequencies option in IQTree. Do not use the amino acid frequencies in the Q files, they are placeholders. Hybrid models in the manuscript (such as QC.pfam using mammalian amino acid frequencies), were also created by using the +F option. 
 
 All QC matrices are also available on IQTree
 
