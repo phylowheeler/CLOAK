@@ -1,5 +1,7 @@
 library(ggplot2)
 library(ggrepel)
+library(scales)
+library(dplyr)
 
 #Figure 1
 
@@ -14,13 +16,43 @@ ggplot(figure1,aes(x=1-false_discovery_rate,y=true_positive_rate,label=labels),c
 
 #Figure2
 
+figure2 <- read.csv("figure2.csv")
+
+log10_minor_break = function (...){
+  function(x) {
+    minx         = floor(min(log10(x), na.rm=T))-1;
+    maxx         = ceiling(max(log10(x), na.rm=T))+1;
+    n_major      = maxx-minx+1;
+    major_breaks = seq(minx, maxx, by=1)
+    minor_breaks = 
+      rep(log10(seq(1, 9, by=1)), times = n_major)+
+      rep(major_breaks, each = 9)
+    return(10^(minor_breaks))
+  }
+}
+
+ggplot(figure2,aes(x=min,y=cloak_change,group = factor(min)),log="y") + labs( x = "Minimum Mutational Distance", y = "Fold Change in\nExchangeability")+ 
+	geom_boxplot() +
+	theme(axis.title=element_text(size=18, face ="bold"),title=element_text(size=18, face ="bold"),
+		panel.background = element_rect(fill = "white", colour = "grey50"),
+		panel.grid.major = element_line(colour = "grey90"),
+		panel.grid.minor = element_line(colour = "grey90"),
+		panel.grid.minor.x = element_blank(),
+        panel.grid.major.x = element_blank()) +
+	theme(axis.text = element_text(size = 12)) +geom_text(data=figure2, aes(x = 2.7, y = 1.7, label = "Spearman's \u03C1 = -0.41\np = 4e-9"),size=5, colour = 'black') +
+	scale_y_continuous(trans='log10', limits=c(0.1,3), breaks = c(0.1,0.2,0.5,1,2,3),minor_breaks=log10_minor_break())
 
 
-
-
-
-
-
+ggplot(figure2,aes(x=min,y=divvier_change,group = factor(min))) + labs( x = "Minimum Mutational Distance", y = "Fold Change in\nExchangeability")+ 
+	geom_boxplot() +
+	theme(axis.title=element_text(size=18, face ="bold"),title=element_text(size=18, face ="bold"),
+		panel.background = element_rect(fill = "white", colour = "grey50"),
+		panel.grid.major = element_line(colour = "grey90"),
+		panel.grid.minor = element_line(colour = "grey90"),
+		panel.grid.minor.x = element_blank(),
+        panel.grid.major.x = element_blank()) +
+	theme(axis.text = element_text(size = 12)) +geom_text(data=figure2, aes(x = 2.7, y = 1.7, label = "Spearman's \u03C1 = -0.54\np = 9e-11"),size=5, colour = 'black') +
+	scale_y_continuous(trans='log10', limits=c(0.1,3), breaks = c(0.1,0.2,0.5,1,2,3),minor_breaks=log10_minor_break())
 
 #Figure 3A
 
@@ -179,11 +211,27 @@ ggplot(scf, aes(x=value, color=variable))+
 
 #Figure 5
 
+figure5 <- read.csv("figure5.csv")
 
+ggplot(filter(figure5,variable=="uncleaned"), aes(x=length, y=distance, colour = factor(genes),size=factor(genes),group=factor(genes)))+
+    geom_point()+
+    scale_size_manual(values = c("1" = 0.1,"4"=0.25,"8"=0.25)) +
+    scale_color_manual(values=c("grey","blue","dark green")) +
+    theme_bw() + theme(plot.margin = margin(10, 10, 10, 10),panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text = element_text(color = "black", size=14),axis.title = element_text(size = 14))+
+    labs(x="Mean Sequence Length (Amino Acids)",y="Lin-Rajan-Moret Distance\n to Species Tree") +
+    geom_smooth(data = filter(figure5, genes == 4,variable=="uncleaned"), method = "lm", se = TRUE,fill="blue",linewidth=1, alpha = 0.2) + 
+    geom_smooth(data = filter(figure5, genes == 8,variable=="uncleaned"), method = "lm", se = TRUE,fill="dark green",linewidth=1, alpha = 0.2) + 
+    geom_smooth(data = filter(figure5, genes == 1,variable=="uncleaned"), method = "loess", se = TRUE,color="black",linewidth=1, alpha = 0.9) + 
+    scale_y_continuous(limits = c(0, 600), expand = c(0, 0))+
+    scale_x_continuous(limits = c(0,10000),expand=c(0,0),breaks=c(2000,4000,6000,8000))
 
-#Supplementary Figure 1
-
-
-
-#Supplementary Figure 2
+ggplot(filter(figure5,genes==1), aes(x=length, y=distance, colour = factor(variable),size=factor(genes),group=factor(genes)))+
+    geom_point()+
+    scale_size_manual(values = c("1" = 0.1)) +
+    scale_color_manual(values=c("dark red","grey")) +
+    theme_bw() + theme(plot.margin = margin(10, 10, 10, 10),legend.position = "none",panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text = element_text(color = "black", size=14),axis.title = element_text(size = 14))+
+    labs(x="Mean Sequence Length (Amino Acids)",y="Lin-Rajan-Moret Distance\n to Species Tree") +
+    geom_smooth(data = filter(figure5, genes == 1,variable=="uncleaned"), method = "loess", se = TRUE,color="black",linewidth=1, alpha = 0.9) + 
+    geom_smooth(data = filter(figure5, genes == 1,variable=="cleaned"), method = "loess", se = TRUE,color="dark red",linewidth=1, alpha = 0.9) + 
+    scale_y_continuous(limits = c(0, 600), expand = c(0, 0))
 
