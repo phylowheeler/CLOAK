@@ -1,6 +1,13 @@
 Pretrained Q matrices:
-Matrices labeled Q.mammal were trained on the mammalian training dataset in the data folder of this repository, after realigning and filtering (using the method specified in the filename) the alignments. QC.mammal was filtered using divvier with partial filtering. 
+- Q.mammal: trained on mammalian dataset realigned with muscle v5.1
+- Q.mammal_cloak: trained on mammalian dataset realigned with muscle v5.1, and filtered using cloak
+- Q.mammal_guidance: trained on mammalian dataset realigned with muscle v5.1, and filtered using GUIDANCE v2.01 by masking all residues with residue scores < 0.9
+- Q.mammal_taper: trained on mammalian dataset realigned with muscle v5.1, and filtered using Taper
+- Q.mammal_divvier: trained on mammalian dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap option
+- QC.mammal: trained on mammalian dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap and -partial options
+- Q.mammal_GTRPMIX: trained on mammalian dataset realigned with muscle v5.1 under a +C60 profile mixture model with linked exchangeabilities. It is optimized to be used for profile mixture models
+- QC.arch: trained on archaeal dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap option
+- QC.bac: trained on bacterial dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap option
+- QC.pfam: trained on pfam dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap option
 
-Q.mammal_GTRPMIX was instead trained under a profile mixture model, and is designed to be used with profile mixture models in IQtree (+C option)
-
-QC.arch, QC.bac, and QC.pfam were also filtered using divvier with partial filtering. Along with QC.mammal, they are also available on IQTree.
+All QC matrices are also available on IQTree
