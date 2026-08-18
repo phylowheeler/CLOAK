@@ -5,12 +5,14 @@ Pretrained Q matrices:
 - Q.mammal_taper: trained on mammalian dataset realigned with muscle v5.1, and filtered using Taper ([Zhang, et al. 2021])
 - Q.mammal_divvier: trained on mammalian dataset realigned with muscle v5.1, and filtered using divvier ([Ali, et al. 2019]) with the -divvygap option
 - QC.mammal: trained on mammalian dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap and -partial options
-- Q.mammal_GTRPMIX: trained on mammalian dataset realigned with muscle v5.1 under a +C60 profile mixture model with linked exchangeabilities ([Banos, et al. 2024]). It is optimized to be used for profile mixture models
+- Q.mammal_GTRPMIX: trained on mammalian dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap and -partial options, under a +C60 profile mixture model with linked exchangeabilities ([Banos, et al. 2024]). It is optimized to be used for profile mixture models
 - QC.arch: trained on archaeal dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap and -partial options
 - QC.bac: trained on bacterial dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap and -partial options
 - QC.pfam: trained on pfam dataset realigned with muscle v5.1, and filtered using divvier with the -divvygap and -partial options
 
 The uncleaned alignments for the mammalian, bacterial, archaeal, and pfam datasets can be found in the [Data](/Data) folder of this repository. The cleaned alignments were not retained.
+
+All filtered Q matrices should be used with the +F empirical frequencies option in IQTree, rather than the amino acid frequencies in the Q files. Hybrid models in the manuscript (such as QC.pfam using mammalian amino acid frequencies), were also created by using the +F option. 
 
 All QC matrices are also available on IQTree
 
