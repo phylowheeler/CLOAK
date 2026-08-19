@@ -8,9 +8,8 @@ THREADS_PER_JOB=1
 
 mkdir -p "$OUTPUT_DIR"
 module load anaconda
-module load parallel
 source ~/.bashrc && conda activate
-conda activate iqtree3
+conda activate iqtree2
 
 export ALIGN_DIR OUTPUT_DIR THREADS_PER_JOB MODEL_FILE
 
@@ -38,8 +37,8 @@ run_iqtree() {
 
     iqtree3 -s "$ALIGN_FILE" \
             -m "$MODEL_emperical" \
-            -mfreq F
-            -mrate E,I,G,I+G,R
+            -mfreq F \
+            -mrate E,I,G,I+G,R \
             -T "$THREADS_PER_JOB" \
             -seed 42 \
             -keep-ident \
@@ -60,9 +59,6 @@ run_iqtree() {
 
 export -f run_iqtree
 
-# Number of jobs to run in parallel = total cpus / threads per job
-MAX_JOBS=$((90 / THREADS_PER_JOB))
 
 echo "[$(date)] Starting batch with $MAX_JOBS parallel IQ-TREE runs..."
-parallel --jobs "$MAX_JOBS" run_iqtree
 echo "[$(date)] All jobs complete."
