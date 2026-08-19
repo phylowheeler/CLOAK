@@ -1,4 +1,4 @@
-Directory containing output from tree distance calculations using Lin-Rajan-Moret distance, Quartet Support, and Normalized Duplications/Transfers/Losses
+Directory containing script that performs paired t-test on tree distance metrics. Uses files containing tree distance calculations from Lin-Rajan-Moret distance, Quartet Support, and Normalized Duplications/Transfers/Losses
 
 -dlt.csv: Duplications, losses, and transfers data
 
