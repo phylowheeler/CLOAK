@@ -43,7 +43,7 @@ ggplot(figure2,aes(x=min,y=cloak_change,group = factor(min)),log="y") + labs( x 
 	scale_y_continuous(trans='log10', limits=c(0.1,3), breaks = c(0.1,0.2,0.5,1,2,3),minor_breaks=log10_minor_break())
 
 
-ggplot(figure2,aes(x=min,y=divvier_change,group = factor(min))) + labs( x = "Minimum Mutational Distance", y = "Fold Change in\nExchangeability")+ 
+ggplot(figure2,aes(x=min,y=divvierpf_change,group = factor(min))) + labs( x = "Minimum Mutational Distance", y = "Fold Change in\nExchangeability")+ 
 	geom_boxplot() +
 	theme(axis.title=element_text(size=18, face ="bold"),title=element_text(size=18, face ="bold"),
 		panel.background = element_rect(fill = "white", colour = "grey50"),
@@ -125,8 +125,8 @@ quartet_gtrpmix <- read.csv("figure3f.csv")
 ggplot(quartet_gtrpmix, aes(x=value, color=variable))+
 	theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text.x = element_text(color = "black", size=12))+
 	scale_color_manual(values=c("red")) +
-    geom_density(size = 1) + labs(x="Change in Gene Tree/\n Species Tree Distance") + 
-    geom_vline(aes(xintercept=0.097),color="black", linetype="solid", size=1) +
+    geom_density(size = 1) + labs(x="Change in Quartet Support") + 
+    geom_vline(aes(xintercept=0.076),color="black", linetype="solid", size=1) +
     scale_x_continuous(breaks=c(-0.1,-0.05,0,0.05,0.1,0.15,0.2),limits=c(-0.15,0.25)) +
     ylim(0,30)
 
@@ -160,15 +160,17 @@ ggplot(dlt2, aes(x=value, color=variable))+
 
 dlt3 <- read.csv("figure3i.csv")
 
-ggplot(dlt_gtrpmix, aes(x=value, color=variable))+
+ggplot(dlt3, aes(x=value, color=variable))+
 	theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text.x = element_text(color = "black", size=12))+
 	scale_color_manual(values=c("red")) +
-    geom_density(size = 1) + labs(x="Change in Gene Tree/\n Species Tree Distance") + 
+    geom_density(size = 1) + labs(x="Decrease in DLT/#Nodes") + 
     geom_vline(aes(xintercept=0.063),color="black", linetype="solid", size=1)+
     xlim(-0.4,0.4) +
     ylim(0,15)
 
 #Figure 4A
+
+lrm_absolute <- read.csv("figure4a.csv")
 
 ggplot(lrm_absolute, aes(x=value, color=variable))+
 	theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text.x = element_text(color = "black", size=22))+
@@ -178,6 +180,8 @@ ggplot(lrm_absolute, aes(x=value, color=variable))+
 
 #Figure 4B
 
+quartet_absolute <- read.csv("figure4b.csv")
+
 ggplot(quartet_absolute, aes(x=value, color=variable))+
 	theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text.x = element_text(color = "black", size=22))+
 	scale_color_manual(values=c("magenta","dark green")) +
@@ -185,6 +189,8 @@ ggplot(quartet_absolute, aes(x=value, color=variable))+
     scale_x_continuous(breaks=c(0.4,0.6,0.8,1),limits=c(0.3,1))
 
 #Figure 4C
+
+dlt_absolute <- read.csv("figure4c.csv")
 
 ggplot(dlt_absolute, aes(x=value, color=variable))+
 	theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text.x = element_text(color = "black", size=18))+
@@ -194,6 +200,8 @@ ggplot(dlt_absolute, aes(x=value, color=variable))+
 
 #Figure 4D
 
+boot_df <- read.csv("figure4d.csv")
+
 ggplot(boot_df, aes(x=value, color=variable))+
 	theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text.x = element_text(color = "black", size=22))+
 	scale_color_manual(values=c("magenta","dark green")) +
@@ -201,6 +209,8 @@ ggplot(boot_df, aes(x=value, color=variable))+
 	scale_x_continuous(breaks=c(0,25,50,75,100),limits=c(0,100))
 
 #Figure 4E
+
+scf <- read.csv("figure4e.csv")
 
 ggplot(scf, aes(x=value, color=variable))+
 	theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text.x = element_text(color = "black", size=22))+
@@ -234,4 +244,3 @@ ggplot(filter(figure5,genes==1), aes(x=length, y=distance, colour = factor(varia
     geom_smooth(data = filter(figure5, genes == 1,variable=="uncleaned"), method = "loess", se = TRUE,color="black",linewidth=1, alpha = 0.9) + 
     geom_smooth(data = filter(figure5, genes == 1,variable=="cleaned"), method = "loess", se = TRUE,color="dark red",linewidth=1, alpha = 0.9) + 
     scale_y_continuous(limits = c(0, 600), expand = c(0, 0))
-
