@@ -33,7 +33,7 @@ Scripts to score the performance of multiple sequence alignment filtering progra
 Guide and scripts for training amino acid substitution models on filtered multiple sequence alignments. Pre-trained substitution models. 
 
 ### Tree_inference+comparison
-Scripts to infer phylogenetic trees and compare them to a reference species tree.
+Scripts to infer phylogenetic trees and compare them to a reference species tree, as well as the dataframes of tree distance metrics
 
 ### Figures
 Scripts and datafiles to generate publication figures
