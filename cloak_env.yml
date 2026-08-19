@@ -13,7 +13,8 @@ dependencies:
   - cogent3
   - divvier
   - muscle
-  - iqtree
-  - astral
+  - iqtree2
   - mafft
   - clustalo
+  - astral-tree
+
