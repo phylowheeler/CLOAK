@@ -8,3 +8,4 @@ Scripts used to generate phylogenetic trees, and to perform calculations using t
 - Tree_distance_data: contains output values from tree distance calculations for each gene, including gene_IDs
 - length.py: script to calculate the mean sequence length in an alignment
 - sample_alignments.sh: bash script to randomly sample a subset of alignments form a directory
+- figure5_stats.R: script to calculate the regression slopes and t.tests for figure 5
