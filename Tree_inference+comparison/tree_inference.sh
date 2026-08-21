@@ -14,8 +14,8 @@ conda activate iqtree2
 export ALIGN_DIR OUTPUT_DIR THREADS_PER_JOB MODEL_FILE
 
 run_iqtree() {
-    local ALIGN_FILE="$file"
-    OUT_PREFIX="${OUTPUT_DIR}/${ALIGN_FILE%.*}"
+    local ALIGN_FILE=$1
+    OUT_PREFIX=$(basename "$ALIGN_FILE" ".${ALIGN_FILE##*.}")
 
     # Check if alignment file exists
     if [[ ! -f "$ALIGN_FILE" ]]; then
