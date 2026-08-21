@@ -42,7 +42,7 @@ Scripts and datafiles to generate publication figures
 Raw datafiles used in analyses
 
 ### Unmaintained Analysis Code
-sripts.tar.gz
+scripts.tar.gz
 
 ## Dependencies
 The software environment in the cloak_env.yml file contains the dependencies needed to run the software in this repository. Set up the environment with conda using
