@@ -7,15 +7,15 @@ dlt <- read.csv("dlt.csv")
 
 
 # Lin-Rajan-Moret t tests
-t.test(lrm$uncleaned,lrm$cloak,paired=TRUE)
-t.test(lrm$uncleaned,lrm$divvier,paired=TRUE)
-t.test(lrm$uncleaned,lrm$taper,paired=TRUE)
-t.test(lrm$uncleaned,lrm$divvierpf,paired=TRUE)
+t.test(lrm$unfiltered,lrm$cloak,paired=TRUE)
+t.test(lrm$unfiltered,lrm$divvier,paired=TRUE)
+t.test(lrm$unfiltered,lrm$taper,paired=TRUE)
+t.test(lrm$unfiltered,lrm$divvierpf,paired=TRUE)
 t.test(lrm$divvierpf,lrm$gene_cloak,paired=TRUE)
 t.test(lrm$divvierpf,lrm$gene_divvier,paired=TRUE)
 t.test(lrm$divvierpf,lrm$gene_taper,paired=TRUE)
 t.test(lrm$divvierpf,lrm$gene_divvierpf,paired=TRUE)
-t.test(lrm$divvierpf,lrm$propagate,paired=TRUE)
+t.test(lrm$divvierpf,lrm$propogate_error,paired=TRUE)
 t.test(lrm$gene_cloak,lrm$gtrpmix,paired=TRUE)
 
 # quartet support t tests
