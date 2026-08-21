@@ -1,4 +1,4 @@
-name: base
+name: cloak_env
 channels:
   - defaults
   - conda-forge
@@ -12,9 +12,13 @@ dependencies:
   - requests
   - cogent3
   - divvier
-  - muscle
-  - iqtree2
-  - mafft
-  - clustalo
-  - astral-tree
-
+  - muscle=5.1
+  - iqtree=2
+  - mafft=7.471
+  - clustalo=1.2.4
+  - astral-tree=5.7.1
+  - beakerx_kernel_java
+  - r
+  - ggplot
+  - cran-ggrepel
+  - cxx-compiler
