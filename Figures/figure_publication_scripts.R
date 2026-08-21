@@ -88,7 +88,7 @@ ggplot(lrm_gtrpmix, aes(x=-value, color=variable))+
 	theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text.x = element_text(color = "black", size=12))+
 	scale_color_manual(values=c("red")) +
     geom_density(size = 1) + labs(x="Change in Gene Tree/\n Species Tree Distance") + 
-    geom_vline(aes(xintercept=22.2),color="black", linetype="solid", size=1) +
+    geom_vline(aes(xintercept=20.7),color="black", linetype="solid", size=1) +
 	xlim(-40,60) +
 	ylim(0,0.1)
 
@@ -138,7 +138,7 @@ ggplot(dlt1, aes(x=value, color=variable))+
 	theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(),axis.text.x = element_text(color = "black", size=12))+
 	scale_color_manual(values=c("magenta","dark green","gold","cyan2")) +
     geom_density(size = 1) + labs(x="Decrease in DLT/#Nodes") + 
-    geom_vline(aes(xintercept=0.063),color="cyan2", linetype="dashed", size=1) +
+    geom_vline(aes(xintercept=0.047),color="cyan2", linetype="dashed", size=1) +
     geom_vline(aes(xintercept=0),color="black", linetype="solid", size=1) +
     xlim(-0.4,0.4) +
     ylim(0,10)
