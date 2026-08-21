@@ -14,26 +14,25 @@ conda activate iqtree2
 export ALIGN_DIR OUTPUT_DIR THREADS_PER_JOB MODEL_FILE
 
 run_iqtree() {
-    ID="$1"
-    ALIGN_FILE="${ALIGN_DIR}/${ID}.nex"
-    OUT_PREFIX="${OUTPUT_DIR}/${ID}"
+    local ALIGN_FILE="$file"
+    OUT_PREFIX="${OUTPUT_DIR}/${ALIGN_FILE%.*}"
 
     # Check if alignment file exists
     if [[ ! -f "$ALIGN_FILE" ]]; then
-        echo "[$(date)] WARNING: Alignment file not found for $ID" >> "$OUTPUT_DIR/missing_files.log"
+        echo "[$(date)] WARNING: Alignment file not found for $ALIGN_FILE" >> "$OUTPUT_DIR/missing_files.log"
         return
     fi
 
     # Skip if output already exists
     if [[ -f "${OUT_PREFIX}.treefile" ]]; then
-        echo "[$(date)] Skipping $ID (already completed)"
+        echo "[$(date)] Skipping $ALIGN_FILE (already completed)"
         return
     fi
 
     # Build model 
     MODEL_emperical="${MODEL_FILE}"
 
-    echo "[$(date)] Starting $ID with model ${MODEL_emperical}"
+    echo "[$(date)] Starting $ALIGN_FILE with model ${MODEL_emperical}"
 
     iqtree3 -s "$ALIGN_FILE" \
             -m "$MODEL_emperical" \
@@ -45,7 +44,7 @@ run_iqtree() {
             -redo \
             -quiet \
             -pre "$OUT_PREFIX" \
-        || echo "[$(date)] ERROR: $ID failed" >> "$OUTPUT_DIR/failed_jobs.log"
+        || echo "[$(date)] ERROR: $ALIGN_FILE failed" >> "$OUTPUT_DIR/failed_jobs.log"
 
     # Clean up intermediate files (only if successful)
     if [[ -f "${OUT_PREFIX}.treefile" ]]; then
@@ -53,12 +52,14 @@ run_iqtree() {
               "${OUT_PREFIX}.bionj" \
               "${OUT_PREFIX}.ckp.gz" \
               "${OUT_PREFIX}.mldist"
-        echo "[$(date)] Finished $ID"
+        echo "[$(date)] Finished $ALIGN_FILE"
     fi
 }
 
 export -f run_iqtree
 
+for file in "$ALIGN_DIR"/*; 
+do [ -f "$file" ] && 
+run_iqtree "$file" ; done
 
-echo "[$(date)] Starting batch with $MAX_JOBS parallel IQ-TREE runs..."
 echo "[$(date)] All jobs complete."
