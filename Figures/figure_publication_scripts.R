@@ -64,7 +64,7 @@ ggplot(lrm1, aes(x=-value, color=variable))+
     geom_density(size = 1) + labs(x="Change in Gene Tree/\n Species Tree Distance") + 
     geom_vline(aes(xintercept=17.3),color="cyan2", linetype="dashed", size=1) +
     geom_vline(aes(xintercept=0),color="black", linetype="solid", size=1) +
-	xlim(-40,60) 
+	xlim(-40,60) +
 	ylim(0,0.1)
 
 #Figure 3B
