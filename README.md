@@ -10,8 +10,8 @@ muscle -align sequences.fasta -stratified -output ensemble.efa
 ```
 The python version can be run in python3:
 ```
-muscle -efa_explode ensemble.efa -output output_directory/
-python3 cloak.py -alignments output_directory
+muscle -efa_explode ensemble.efa -output alignment_directory/
+python3 cloak.py -alignment_directory
 ```
 The muscle version can be run as a separate command within muscle:
 ```
